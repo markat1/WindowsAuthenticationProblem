@@ -1,0 +1,49 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>WindowsAuthenticationProblem</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+
+
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+
+            <AuthorizeView>
+                <Authorized>
+                    <div class="flex flex-row">
+                        <div class="align-middle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 25 25" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </div>
+                        <div>
+                            @if (IsLoggedIn)
+                            {
+
+                                @GetUserShortName(User?.Name)
+
+                            }
+                        </div>
+                    </div>
+
+                    <NavMenu />
+
+                </Authorized>
+
+                <NotAuthorized>
+                    <div>
+                        Not Logged in
+                    </div>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
